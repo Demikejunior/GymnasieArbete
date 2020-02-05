@@ -1,5 +1,5 @@
 dataPoints;minVal;maxVal;dataType;Obj1;Obj2;Obj3;Obj4
-DP1;0;1;boolean;true;false;false;true
+DP1;0;1;boolean;1;0;0;1
 DP2;-20;20;double;-3.5;0.6;15.0;14.6
 DP3;-20;20;int;-19;10;5;-3
 DP4;0;20;double;3.3;4.7;2.5;19
