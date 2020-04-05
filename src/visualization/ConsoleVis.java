@@ -1,14 +1,13 @@
-package test;
+package visualization;
 
-import importation.Import;
+import control.Import;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class Main {
-	private static String loc = "C:/Users/usr/Documents/GitHub/GymnasieArbete/src/spreadsheet/spreadsheetTemplate.csv";
+public class ConsoleVis {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public ConsoleVis(String loc) throws FileNotFoundException {
 
 		ArrayList<ArrayList<String>> dataArray = new Import(loc, false).getSheet();
 		ArrayList<ArrayList<String>> objectArray = new Import(loc, true).getSheet();

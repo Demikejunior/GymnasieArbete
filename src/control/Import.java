@@ -1,4 +1,4 @@
-package importation;
+package control;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +18,7 @@ public class Import {
 
 	/**
 	 * loc is the location of the .csv file that is to be imported
-	 * target is which part of the spreadsheet that is supposed to be imported,
+	 * target is which part of the model.spreadsheet that is supposed to be imported,
 	 * target == false targets the data points, and the minimum value, maximum value and the data type of those data points
 	 * target == true targets the objects
 	 *
