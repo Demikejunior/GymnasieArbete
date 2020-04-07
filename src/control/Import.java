@@ -6,21 +6,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Import {
+	
+	/**
+	 * Gets the sheet that the object currently holds
+	 * @return
+	 */
 	public ArrayList<ArrayList<String>> getSheet() {
 		return sheet;
 	}
-
+	
+	/**
+	 * Clears the sheet that the object currently holds
+	 */
 	public void clearSheet() {
 		sheet.clear();
 	}
 
+	
 	private ArrayList<ArrayList<String>> sheet = new ArrayList<ArrayList<String>>();
 
 	/**
-	 * loc is the location of the .csv file that is to be imported
-	 * target is which part of the model.spreadsheet that is supposed to be imported,
-	 * target == false targets the data points, and the minimum value, maximum value and the data type of those data points
-	 * target == true targets the objects
+	 * loc - the location of the .csv file that is to be imported
+	 * target - the part of the model.spreadsheet that is supposed to be imported,
+	 * target == false - targets the data points, the value range, and the data type of those data points
+	 * target == true - targets the objects
 	 *
 	 * @param loc
 	 * @param target
@@ -31,6 +40,8 @@ public class Import {
 		Scanner sc = new Scanner(new File(loc));
 
 		if (!target) {
+			// Imports the objects part of the spreadsheet
+			
 			while (sc.hasNextLine()) {
 
 				sheet.add(HorizontalInsert(sc.nextLine().split(";"), 0, 4));
@@ -38,30 +49,37 @@ public class Import {
 			}
 
 		} else {
+			// Imports the objects part of the spreadsheet
+			
+			// The row the method is currently working on
 			int dataIndex = 0;
+			// The sheet that the method will export
 			ArrayList<ArrayList<String>> objectArray = new ArrayList<ArrayList<String>>();
 
 			while (sc.hasNextLine()) {
 
+				// An array of the values on the current row
 				ArrayList<String> dataPoint = HorizontalInsert(sc.nextLine().split(";"), 4, 0);
 
+				// Adds the values to the relevant object in objectArray
 				for (int objectIndex = 0; objectIndex < dataPoint.size(); objectIndex++) {
 
-					ArrayList<String> arrayObject = new ArrayList<String>();
+					
+					ArrayList<String> sheetObject = new ArrayList<String>();
 
 					if (dataIndex == 0) {
 
-						arrayObject.add(dataPoint.get(objectIndex));
+						sheetObject.add(dataPoint.get(objectIndex));
 
-						objectArray.add(arrayObject);
+						objectArray.add(sheetObject);
 
 					} else {
 
-						arrayObject.addAll(objectArray.get(objectIndex));
+						sheetObject.addAll(objectArray.get(objectIndex));
 
-						arrayObject.add(dataPoint.get(objectIndex));
+						sheetObject.add(dataPoint.get(objectIndex));
 
-						objectArray.set(objectIndex, arrayObject);
+						objectArray.set(objectIndex, sheetObject);
 
 					}
 
@@ -72,6 +90,7 @@ public class Import {
 
 			}
 
+			// Exports objectArray
 			for (ArrayList<String> out: objectArray) {
 
 				sheet.add(out);
@@ -83,29 +102,37 @@ public class Import {
 
 		sc.close();
 	}
-
+	
+	/**
+	 * A method for handling the partitioning of a row
+	 *
+	 * @param in
+	 * @param start
+	 * @param end
+	 * @return rowPart
+	 */
 	private ArrayList<String> HorizontalInsert(String[] in, int start, int end) {
-		ArrayList<String> arrayObject = new ArrayList<String>();
+		ArrayList<String> rowPart = new ArrayList<String>();
 
 		if (end == 0) {
 
 			for (int i = start; i < in.length; i++) {
 				String dataPoint = in[i];
 
-				arrayObject.add(dataPoint);
+				rowPart.add(dataPoint);
 			}
 
-			return arrayObject;
+			return rowPart;
 
 		} else {
 
 			for (int i = start; i < end; i++) {
 				String dataPoint = in[i];
 
-				arrayObject.add(dataPoint);
+				rowPart.add(dataPoint);
 			}
 
-			return arrayObject;
+			return rowPart;
 
 		}
 
