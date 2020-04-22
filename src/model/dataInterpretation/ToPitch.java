@@ -45,7 +45,7 @@ public class ToPitch extends LinearTransformation {
 	 * @param DPMin
 	 * @param DPMax
 	 */
-	public void ToNote(Double DPMin, Double DPMax) {
+	public ToPitch(Double DPMin, Double DPMax) {
 		this.DPMin = DPMin;
 		this.DPMax = DPMax;
 	}
@@ -54,7 +54,7 @@ public class ToPitch extends LinearTransformation {
 	 * Get the frequency value of the object
 	 *
 	 * @param DPValue
-	 * @return
+	 * @return ParOut
 	 */
 	public Double ToHZ(Double DPValue) {
 		return Math.pow(2, (ToPianoNote(DPValue) - 61) / 12.0) * 880;
@@ -64,7 +64,7 @@ public class ToPitch extends LinearTransformation {
 	 * Get the note value of the object
 	 *
 	 * @param DPValue
-	 * @return
+	 * @return ParOut
 	 */
 	public Double ToPianoNote(Double DPValue) {
 		return ValueTransform(DPValue, DPMin, DPMax, ParamMinNote, ParamMaxNote);
