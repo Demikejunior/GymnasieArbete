@@ -3,6 +3,7 @@ package visualization;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 public class App extends Application {
@@ -11,8 +12,9 @@ public class App extends Application {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		String loc = "C:/Users/usr/Documents/GitHub/GymnasieArbete/src/model/spreadsheet/spreadsheetTemplate.csv";
-
+		String loc = new File("").getAbsolutePath() + "\\src\\model\\spreadsheet\\spreadsheetTemplate.csv";
+		System.out.println(loc);
+		System.out.println();
 
 		if (visual) {
 			launch();
