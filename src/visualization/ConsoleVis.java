@@ -2,6 +2,7 @@ package visualization;
 
 import control.Import;
 
+import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -16,9 +17,9 @@ public class ConsoleVis {
 			ArrayList<String> dataPoint = dataArray.get(i);
 
 			for (int j = 0; j < dataPoint.size(); j++) {
-				String dataValue = dataPoint.get(j);
+				String dataIn = dataPoint.get(j);
 
-				System.out.print(dataValue + "    ");
+				System.out.print(dataIn + "    ");
 			}
 			System.out.println();
 		}
